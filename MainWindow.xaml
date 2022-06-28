@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberShop"
         mc:Ignorable="d"
-        Title="Barber Shop" Height="350" Width="500"
-        Source="BarberShopLogin.xaml">
+        Title="Barber Shop" Height="350" Width="500">
         
 
 </NavigationWindow>
