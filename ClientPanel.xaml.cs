@@ -18,7 +18,9 @@ using System.Windows.Shapes;
 namespace BarberShop
 {
     /// <summary>
-    /// Interaction logic for ClientPanel.xaml
+    /// Client Panel opens after user accesses
+    /// client's account, used to check upcoming
+    /// visits, as well as creating new reservations;
     /// </summary>
     public partial class ClientPanel : Window
     {
@@ -31,7 +33,10 @@ namespace BarberShop
 
         }
         public static string date;
-
+        /// <summary>
+        /// GetDate() Method for storing reservation date
+        /// information provided by user
+        /// </summary>
         private void GetDate()
         {
             if (DaySelect.SelectedDate != null)
@@ -45,7 +50,10 @@ namespace BarberShop
             }
         }
         public static string time;
-
+        /// <summary>
+        /// GetTime() Method for storing reservation time
+        /// information provided by user
+        /// </summary>
         private void GetTime()
         {
             if (TimeSelect.SelectedValue != null)
@@ -59,7 +67,10 @@ namespace BarberShop
             }
         }
         public static string address;
-
+        /// <summary>
+        /// GetAddress() Method for storing reservation address
+        /// information provided by user
+        /// </summary>
         private void GetAddress()
         {
             if (PlaceSelect.SelectedValue != null)
@@ -73,6 +84,11 @@ namespace BarberShop
             }
         }
         public List<Pracownicy> Barber { get; set; }
+        /// <summary>
+        /// bindShop() Method for formatting and displaying
+        /// database columns in order to show user all available
+        /// barber shop locations
+        /// </summary>
         private void bindShop()
         {
             SqlConnection sqlCon = new SqlConnection(@"Data Source=(local); Initial Catalog = Barber; Integrated Security = True;");
@@ -100,7 +116,11 @@ namespace BarberShop
                 sqlCon.Close();
             }
         }
-        
+        /// <summary>
+        /// bindDataGrid Method is used to check Rezerwacje table in database
+        /// and display data related to upcoming visites of a logged in
+        /// using DataGrid table
+        /// </summary>
         private void bindDataGrid()
         {
             SqlConnection sqlCon = new SqlConnection();
@@ -124,6 +144,12 @@ namespace BarberShop
             adapter.Fill(dt);
             UpcomingRes.ItemsSource = dt.DefaultView;
         }
+        /// <summary>
+        /// SubmitVisit Method is connected to the "Submit" button;
+        /// Checks the information provided by user, then allows
+        /// user to check available barbers if the provided information
+        /// is correct
+        /// </summary>
         private void SubmitVisit(object sender, RoutedEventArgs e)
         {
             if (TimeSelect.SelectedValue != null && DaySelect.SelectedDate != null
@@ -143,7 +169,10 @@ namespace BarberShop
             }
             
         }
-
+        /// <summary>
+        /// Logout_Click Method is pinned to "Logout" button,
+        /// used to exit account and close an application
+        /// </summary>
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

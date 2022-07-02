@@ -17,7 +17,8 @@ using System.Windows.Shapes;
 namespace BarberShop
 {
     /// <summary>
-    /// Interaction logic for Registration.xaml
+    /// Registration Window allows users to add
+    /// a new account to the database
     /// </summary>
     public partial class Registration : Window
     {
@@ -25,7 +26,12 @@ namespace BarberShop
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Submit_Click method checks if user provided
+        /// correct data, then creates a new account
+        /// based on the data provided by user,
+        /// afterward the window closes;
+        /// </summary>
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
            
@@ -43,33 +49,23 @@ namespace BarberShop
                 SqlCommand userReg = new SqlCommand(userAdd, sqlCon);
 
                     userReg.CommandType = CommandType.Text;
-
-                if (Firstname.Text.Length < 2)
-                    MessageBox.Show("Name is too short");
-                else
+                
+                if (Firstname.Text.Length >= 2)
                     userReg.Parameters.AddWithValue("@Firstname", Firstname.Text);
 
-                if (Lastname.Text.Length < 2)
-                    MessageBox.Show("Last name is too short");
-                else
+                if (Lastname.Text.Length >= 2)
                     userReg.Parameters.AddWithValue("@Lastname", Lastname.Text);
 
-                if (Pesel.Text.Length != 11 || !isNumeric)
-                    MessageBox.Show("PESEL is incorrect");
-                else
+                if (Pesel.Text.Length == 11 && isNumeric)
                     userReg.Parameters.AddWithValue("@pesel", Pesel.Text);
 
-                if (Username.Text.Length < 3)
-                    MessageBox.Show("Username is too short");
-                else
+                if (Username.Text.Length >= 3)
                     userReg.Parameters.AddWithValue("@Username", Username.Text);
 
-                if (Password.Password.Length < 5)
-                    MessageBox.Show("Password is too weak");
-                else
+                if (Password.Password.Length >= 5)
                     userReg.Parameters.AddWithValue("@Password", Password.Password);
 
-
+                
                 int count = userReg.ExecuteNonQuery();
                 
 

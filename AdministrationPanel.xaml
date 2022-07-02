@@ -10,7 +10,7 @@
         <StackPanel Margin="10">
             <Label Content="Upcoming Visits" Foreground="White" FontSize="30" HorizontalAlignment="Center"/>
             <Separator></Separator>
-            <DataGrid Name ="UpcomingVis" AutoGenerateColumns="False" Width="400">
+            <DataGrid Name ="UpcomingVis" AutoGenerateColumns="False" Width="400" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding ImieNazwisko}" Header="Client" Width="200"></DataGridTextColumn>
                     <DataGridTextColumn Binding="{Binding DataCzas}" Header="Time" Width="200"></DataGridTextColumn>

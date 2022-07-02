@@ -17,7 +17,10 @@ using System.Windows.Shapes;
 namespace BarberShop
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Login Screen; Used to access both user accounts
+    /// as well as worker accounts, contains Log in and
+    /// Sign Up options; The last one transfers the user
+    /// to the sign up page
     /// </summary>
     public partial class LoginScreen : Window
     {
@@ -28,7 +31,13 @@ namespace BarberShop
             name = Username.Text;
         }
 
-
+        /// <summary>
+        /// Submit_Click method is connected to Log In button
+        /// Checks if username and password are correct using
+        /// the information in database; Depending on this,
+        /// either allows user to access the account or asks
+        /// to provide correct data
+        /// </summary>
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection sqlCon = new SqlConnection(@"Data Source=(local); Initial Catalog = Barber; Integrated Security = True;");
@@ -82,7 +91,10 @@ namespace BarberShop
                 sqlCon.Close();
             }
         }
-
+        /// <summary>
+        /// Registration_Click method transfers new user to
+        /// the registration window
+        /// </summary>
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
             Registration window = new Registration();
