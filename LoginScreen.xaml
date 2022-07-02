@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberShop"
         mc:Ignorable="d"
-        Title="Login" Height="300" Width="300" FontSize="15" Background="White">
+        Title="Login" Height="380" Width="300" FontSize="15" Background="White" WindowState="Normal" ResizeMode="NoResize">
     <Border Background="Black" CornerRadius="10" Margin="10">
         <StackPanel Margin="10">
             <Label Content="LOGIN" Foreground="White" FontSize="30" HorizontalAlignment="Center"/>
@@ -15,6 +15,9 @@
             <Label Content="PASSWORD" Foreground= "White" HorizontalAlignment="Center" FontSize="20"></Label>
             <PasswordBox Name ="Password" Background="Gray" Foreground="White" FontSize="20"></PasswordBox>
             <Button Name ="Submit" Click ="Submit_Click" Content="SUBMIT" Margin="70 10" Background="Gray" Foreground="White" FontSize="20"></Button>
+            <Separator></Separator>
+
+            <Button Name ="Registration" Click="Registration_Click" Content="SIGN UP" Margin="70 25" Background="Gray" Foreground="White" FontSize="20"></Button>
         </StackPanel>
     </Border>
 </Window>

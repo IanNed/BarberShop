@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -20,17 +21,20 @@ namespace BarberShop
     /// </summary>
     public partial class LoginScreen : Window
     {
-        public LoginScreen()
+        public static string name;
+
+        private void GetUsername()
         {
-            InitializeComponent();
+            name = Username.Text;
         }
+
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection sqlCon = new SqlConnection(@"Data Source=(local); Initial Catalog = Barber; Integrated Security = True;");
             try
             {
-                if (sqlCon.State == System.Data.ConnectionState.Closed)
+                if (sqlCon.State == ConnectionState.Closed)
                     sqlCon.Open();
                 String userCheck = 
                     "SELECT COUNT(1) FROM Klienci WHERE Nickname = @Username AND Haslo = @Password";
@@ -38,13 +42,14 @@ namespace BarberShop
                     "SELECT COUNT(1) FROM Pracownicy WHERE Nickname = @Username AND Haslo = @Password";
 
                 SqlCommand userLogin = new SqlCommand(userCheck, sqlCon);
-                userLogin.CommandType = System.Data.CommandType.Text;
+                userLogin.CommandType = CommandType.Text;
                 userLogin.Parameters.AddWithValue("@Username", Username.Text);
                 userLogin.Parameters.AddWithValue("@Password", Password.Password);
 
                 SqlCommand adminLogin = new SqlCommand(adminCheck, sqlCon);
-                adminLogin.CommandType = System.Data.CommandType.Text;
+                adminLogin.CommandType = CommandType.Text;
                 adminLogin.Parameters.AddWithValue("@Username", Username.Text);
+                GetUsername();
                 adminLogin.Parameters.AddWithValue("@Password", Password.Password);
 
 
@@ -52,13 +57,13 @@ namespace BarberShop
                 int aCount = Convert.ToInt32(adminLogin.ExecuteScalar());
                 if(uCount == 1)
                 {
-                    MainWindow dashboard = new MainWindow();
+                    ClientPanel dashboard = new ClientPanel();
                     dashboard.Show();
                     this.Close();
                 }
                 else if(aCount == 1)
                 {
-                    MainWindow dashboard = new MainWindow();
+                    AdministrationPanel dashboard = new AdministrationPanel();
                     dashboard.Show();
                     this.Close();
                 }
@@ -76,6 +81,13 @@ namespace BarberShop
             {
                 sqlCon.Close();
             }
+        }
+
+        private void Registration_Click(object sender, RoutedEventArgs e)
+        {
+            Registration window = new Registration();
+            window.Show();
+            
         }
     }
 }
