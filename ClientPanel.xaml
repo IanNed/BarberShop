@@ -21,7 +21,7 @@
             <Label Content="Book a Visit" Foreground="White" FontSize="30" HorizontalAlignment="Center"/>
             <Separator></Separator>
             <DatePicker x:Name="DaySelect" FontSize ="18" Width="828"/>
-            <ComboBox Name ="TimeSelect" Margin="2,10,30,0" Text="Select a time"  IsEditable="True"
+            <ComboBox Name ="TimeSelect" Margin="2,10,30,0" Text="Select time"  IsEditable="True"
                 IsReadOnly="True" FontSize="18" Width="800">
                 <ComboBoxItem Content="1:00:00 PM"></ComboBoxItem>
                 <ComboBoxItem Content="2:00:00 PM"></ComboBoxItem>
@@ -32,7 +32,7 @@
                 <ComboBoxItem Content="7:00:00 PM"></ComboBoxItem>
                 <ComboBoxItem Content="8:00:00 PM"></ComboBoxItem>
             </ComboBox>
-            <ComboBox Name ="PlaceSelect" Margin="2,10,30,0" Text="Select a barber shop"  IsEditable="True"
+            <ComboBox Name ="PlaceSelect" Margin="2,10,30,0" Text="Select barber shop"  IsEditable="True"
                 IsReadOnly="True" FontSize="18" Width="800"></ComboBox>
             <Button Name ="Confirm" Click ="SubmitVisit" Content="SUBMIT" Margin="300 10" Background="Gray" Foreground="White" FontSize="20"></Button>
             <Button Name ="Logout" Click ="Logout_Click" Content="LOG OUT" Margin="660,-20,30,10" Background="Gray" Foreground="White" FontSize="20" Height="33" Width="89" RenderTransformOrigin="0.425,-3.857"></Button>
